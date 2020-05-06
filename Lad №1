@@ -1,0 +1,26 @@
+package com.company;
+
+/**
+ * С2 = 0 = +
+ * С3 = 2 , С = 2
+ * С5 = 4 = -
+ * С7 = 4 = тип індексів i та j = char
+ */
+
+
+public class Lab1OOP {
+    public static void main(String[] args){
+        int C=4;
+        double S=0;
+        char a=0;
+        char b=0;
+        char n=1;
+        char m=1;
+        for (char i=a; i<=n; i++){
+            for (char j=b; j<=m; j++){
+                S=((double)(i-j)/(i+C))+S;
+            }
+        }
+        System.out.println("S= "+S);
+    }
+}
