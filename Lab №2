@@ -1,0 +1,105 @@
+/**
+ * C5 = 4 множення
+ * C7 = 2 тип елементів матриці short
+ * C11 = 6 - Обчислити суму найбільших елементів в стовпцях матриці з парними номерами
+ * та найменших елементів в стовпцях матриці з непарними номерами
+ */
+public class Main {
+
+
+    public static void main(String[] args) {
+
+        long[][] A = {{1,2,3},
+                {4,5,6},
+                {7,8,9},
+                {10,11,12},
+                {13,14,15}};
+
+
+        long [][] B = {{1,2,3,4},
+                {5,6,7,8},
+                {9,10,11,12}};
+
+        if (A[0].length != B.length ) {
+            System.out.println("Error");
+            return;
+        }
+
+        int q = B[0].length;
+        int n = A.length;
+        int m = A[0].length;
+
+        long[][] C = new long [n][q];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < q; j++) {
+                C[i][j] = 0;
+                for (int k = 0; k < m; k++) {
+                    C[i][j] +=  A[i][k] * B[k][j];
+                }
+            }
+        }
+
+        for (int i = 0; i < C.length; i++) {
+            for (int j = 0; j < C[0].length; j++) {
+                System.out.print(C[i][j]+" ");
+            }
+            System.out.println();
+        }
+        long [] minimum = new long [n];
+        long [] maximum = new long [q];
+        long nmin = C[0][0];
+        long nmax=  C[0][1];
+
+
+        int p = 0;
+        for (int i = 0; i < m;i+=2){
+            nmin = C[0][i];
+            for( int j = 0; j <m; j++){
+                if (C[j][i] <= nmin){
+                    nmin = C[j][i];
+                }
+            }
+            minimum[p] = nmin;
+            p++;
+        }
+
+        int r = 0;
+        for ( int i = 1; i < n;i+=2){
+            nmax = C[0][i];
+            for(int j = 0; j < n; j++){
+                if (C[j][i] >= nmax){
+                    nmax = C[j][i];
+                }
+            }
+            maximum[r] = nmax;
+            r++;
+        }
+
+
+        long smax = 0;
+        long smin = 0;
+
+        System.out.println("Найменші елементи");
+
+        for(int i = 0; i < m/2+1; i++){
+            smin +=minimum[i];
+            System.out.println(minimum[i]);
+
+        }
+
+        System.out.println("Найбільші елементи");
+
+        for(int i = 0; i < m-1; i++){
+            smax +=maximum[i];
+            System.out.println(maximum[i]);
+        }
+
+
+        System.out.println("Сума найменших елементів в стовпцях матриці з непарними номерами"+"="+smin);
+        System.out.println("Сума найбільших елементов в стовпцях матриці з парними номерами"+"="+smax);
+
+
+    }
+
+}
