@@ -1,0 +1,18 @@
+class Text():
+    def __init__(self, text, NewWord):
+        self.text=text
+        self.NewWord=NewWord
+        self.NewStr=""
+        print(text)
+
+    def Zamina(self):
+        for i in self.text.split():
+            if len(i) == 9:
+                self.NewStr += self.NewWord + " "
+                continue
+            self.NewStr += i + " "
+        print(self.NewStr)
+
+
+Zam=Text("Заметался пожар голубой, позабылись родимые дали", "Засуетился")
+print(Zam.Zamina())
