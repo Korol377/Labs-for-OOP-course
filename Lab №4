@@ -1,0 +1,110 @@
+Class Lab4
+
+import java.util.Arrays;
+public class Lab4 {
+    public static void main(String[] args) {
+        Furniture table1 = new Furniture("table", "brown", 15, 42, 65);
+        Furniture table2 = new Furniture("table", "green", 25, 44, 66);
+        Furniture table3 = new Furniture("table", "red", 34, 43, 25);
+        Furniture chair1 = new Furniture("chair", "brown", 10, 21, 11);
+        Furniture chair2 = new Furniture("chair", "white", 12, 4, 34);
+        Furniture Array[] = { table1, table2, table3, chair1, chair2 };
+        Arrays.sort(Array, new SortByType());
+        System.out.println("Lexicographical sorting:");
+        for (int i = 0; i < Array.length; i++) {
+            System.out.println(Array[i].type.toLowerCase());
+        }
+        Arrays.sort(Array, new SortByLength());
+        System.out.println("Sorting by length:");
+        for (int i = 0; i < Array.length; i++) {
+            System.out.println(Array[i].length);
+        }
+        Arrays.sort(Array, new SortByHeight());
+        System.out.println("Sorting by height:");
+        for (int i = 0; i < Array.length; i++) {
+            System.out.println(Array[i].height);
+        }
+    }
+}
+
+
+Class Furniture
+
+
+/**
+ * This class describe data about object Furniture.
+ */
+public class Furniture {
+
+    public String type;
+    public String color;
+    public int length;
+    public int height;
+    public int width;
+
+    /**
+     * @param t
+     *            this variable is assigned to the field "type".
+     * @param c
+     *            this variable is assigned to the field "color".
+     * @param l
+     *            this variable is assigned to the field "height".
+     * @param h
+     *            this variable is assigned to the field "height".
+     * @param w
+     *            this variable is assigned to the field "width".
+     */
+
+    public Furniture(String t, String c, int l, int h, int w) {
+        type = t;
+        color = c;
+        length = l;
+        height = h;
+        width = w;
+    }
+}
+
+
+Class SortByType
+
+import java.util.Comparator;
+public class SortByType implements Comparator<Furniture> {
+    /**
+     *@return type of Integer.
+     *Overrides the method compare for sort massive of object.
+     *@param obj1,obj2 are objects of class Furniture.
+     */
+    public int compare(Furniture obj1, Furniture obj2) {
+        return obj1.type.toLowerCase().compareTo(obj2.type.toLowerCase());
+    }
+}
+
+
+Class SortByHeight
+
+import java.util.Comparator;
+public class SortByHeight implements Comparator<Furniture> {
+    /**
+     *@return type of Integer.
+     *Overrides the method compare for sort massive of object.
+     *@param obj1,obj2 are objects of class Furniture.
+     */
+    public int compare(Furniture obj1, Furniture obj2) {
+        return obj1.height - obj2.height;
+    }
+}
+
+
+Class SortByLength
+
+import java.util.Comparator;
+public class SortByLength implements Comparator<Furniture> {
+    /**
+     *@return type of Integer.
+     *Overrides the method compare for sort massive of object
+     *@param obj1,obj2 are objects of class Furniture
+     */
+    public int compare(Furniture obj1, Furniture obj2) {
+        return obj2.length - obj1.length;
+    }
+}
